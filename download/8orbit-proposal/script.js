@@ -1,5 +1,6 @@
 /* ============================================
-   8ORBIT STUDIOS — Proposal Page Scripts
+   8ORBIT STUDIOS — Proposal Page Scripts V2
+   Alive + Interactive
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,9 +13,45 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
   revealElements.forEach(el => revealObserver.observe(el));
+
+
+  // ---- 3D Tilt on Glass Cards ----
+  const glassCards = document.querySelectorAll('.glass, .glass-light');
+  glassCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
+      card.style.transform = `translateY(-6px) scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ---- 3D Tilt on Comparison Cards ----
+  document.querySelectorAll('.comparison-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      card.style.transform = `translateY(-8px) scale(1.02) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
 
   // ---- Animated Number Counters ----
   const counters = document.querySelectorAll('[data-count]');
@@ -23,39 +60,31 @@ document.addEventListener('DOMContentLoaded', () => {
   function animateCounters() {
     if (countersAnimated) return;
     countersAnimated = true;
-
     counters.forEach(counter => {
       const target = parseFloat(counter.getAttribute('data-count'));
       const suffix = counter.getAttribute('data-suffix') || '';
       const prefix = counter.getAttribute('data-prefix') || '';
       const decimals = (target % 1 !== 0) ? 1 : 0;
-      const duration = 2000;
+      const duration = 2200;
       const startTime = performance.now();
-
       function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
+        const eased = 1 - Math.pow(1 - progress, 4);
         const current = eased * target;
-
         if (decimals > 0) {
           counter.textContent = prefix + current.toFixed(decimals) + suffix;
         } else {
           counter.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
         }
-
         if (progress < 1) {
           requestAnimationFrame(update);
         } else {
-          if (decimals > 0) {
-            counter.textContent = prefix + target.toFixed(decimals) + suffix;
-          } else {
-            counter.textContent = prefix + target.toLocaleString() + suffix;
-          }
+          counter.textContent = decimals > 0
+            ? prefix + target.toFixed(decimals) + suffix
+            : prefix + target.toLocaleString() + suffix;
         }
       }
-
       requestAnimationFrame(update);
     });
   }
@@ -64,13 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (countersSection) {
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-        }
+        if (entry.isIntersecting) animateCounters();
       });
     }, { threshold: 0.3 });
     counterObserver.observe(countersSection);
   }
+
 
   // ---- Navigation Dots ----
   const sections = document.querySelectorAll('.section[id]');
@@ -79,29 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateActiveDot() {
     let currentIndex = 0;
     const scrollPos = window.scrollY + window.innerHeight / 2;
-
     sections.forEach((section, index) => {
-      if (scrollPos >= section.offsetTop) {
-        currentIndex = index;
-      }
+      if (scrollPos >= section.offsetTop) currentIndex = index;
     });
-
     navDots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentIndex);
     });
   }
 
   window.addEventListener('scroll', updateActiveDot, { passive: true });
-
   navDots.forEach(dot => {
     dot.addEventListener('click', () => {
-      const targetId = dot.getAttribute('data-target');
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      const target = document.getElementById(dot.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
 
   // ---- Chart.js — Views Line Chart ----
   const viewsCtx = document.getElementById('viewsChart');
@@ -126,26 +147,28 @@ document.addEventListener('DOMContentLoaded', () => {
         datasets: [{
           label: 'Views',
           data: [45, 120, 210, 380, 520, 780, 1100, 1800, 3007],
-          borderColor: '#d4a574',
+          borderColor: '#e8c49a',
           backgroundColor: (context) => {
             const chart = context.chart;
             const { ctx: c, chartArea } = chart;
-            if (!chartArea) return 'rgba(212, 165, 116, 0.1)';
+            if (!chartArea) return 'rgba(232, 196, 154, 0.1)';
             const gradient = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-            gradient.addColorStop(0, 'rgba(212, 165, 116, 0.25)');
-            gradient.addColorStop(1, 'rgba(212, 165, 116, 0.02)');
+            gradient.addColorStop(0, 'rgba(232, 196, 154, 0.3)');
+            gradient.addColorStop(0.5, 'rgba(196, 154, 108, 0.1)');
+            gradient.addColorStop(1, 'rgba(196, 154, 108, 0.01)');
             return gradient;
           },
           borderWidth: 2.5,
           fill: true,
           tension: 0.4,
-          pointBackgroundColor: '#d4a574',
+          pointBackgroundColor: '#e8c49a',
           pointBorderColor: '#603813',
           pointBorderWidth: 2,
-          pointRadius: 4,
-          pointHoverRadius: 7,
-          pointHoverBackgroundColor: '#d4a574',
-          pointHoverBorderColor: '#f5ede3',
+          pointRadius: 5,
+          pointHoverRadius: 8,
+          pointHoverBackgroundColor: '#ffffff',
+          pointHoverBorderColor: '#e8c49a',
+          pointHoverBorderWidth: 3,
         }]
       },
       options: {
@@ -154,52 +177,43 @@ document.addEventListener('DOMContentLoaded', () => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: 'rgba(26, 14, 4, 0.9)',
-            titleColor: '#d4a574',
+            backgroundColor: 'rgba(13, 7, 4, 0.95)',
+            titleColor: '#e8c49a',
             bodyColor: '#f5ede3',
-            borderColor: 'rgba(196, 154, 108, 0.3)',
+            borderColor: 'rgba(232, 196, 154, 0.3)',
             borderWidth: 1,
-            cornerRadius: 10,
-            padding: 12,
+            cornerRadius: 12,
+            padding: 14,
             displayColors: false,
-            titleFont: { family: 'Inter', weight: '600' },
-            bodyFont: { family: 'Inter' },
+            titleFont: { family: 'Inter', weight: '600', size: 13 },
+            bodyFont: { family: 'Inter', size: 13 },
             callbacks: {
-              label: function(context) {
-                return context.parsed.y.toLocaleString() + ' views';
-              }
+              label: (context) => context.parsed.y.toLocaleString() + ' views'
             }
           }
         },
         scales: {
           x: {
-            grid: { color: 'rgba(196, 154, 108, 0.06)' },
-            ticks: {
-              color: 'rgba(245, 237, 227, 0.4)',
-              font: { family: 'Inter', size: 11 }
-            },
-            border: { color: 'rgba(196, 154, 108, 0.1)' }
+            grid: { color: 'rgba(232, 196, 154, 0.06)' },
+            ticks: { color: 'rgba(245, 237, 227, 0.4)', font: { family: 'Inter', size: 11 } },
+            border: { color: 'rgba(232, 196, 154, 0.08)' }
           },
           y: {
-            grid: { color: 'rgba(196, 154, 108, 0.06)' },
+            grid: { color: 'rgba(232, 196, 154, 0.06)' },
             ticks: {
               color: 'rgba(245, 237, 227, 0.4)',
               font: { family: 'Inter', size: 11 },
-              callback: function(value) {
-                return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : value;
-              }
+              callback: (value) => value >= 1000 ? (value / 1000).toFixed(1) + 'k' : value
             },
             border: { display: false },
             beginAtZero: true
           }
         },
-        interaction: {
-          intersect: false,
-          mode: 'index'
-        }
+        interaction: { intersect: false, mode: 'index' }
       }
     });
   }
+
 
   // ---- Chart.js — Audience Doughnut Chart ----
   const audienceCtx = document.getElementById('audienceChart');
@@ -223,19 +237,19 @@ document.addEventListener('DOMContentLoaded', () => {
         labels: ['New Audience (Non-Followers)', 'Existing Followers'],
         datasets: [{
           data: [77.5, 22.5],
-          backgroundColor: ['#d4a574', 'rgba(196, 154, 108, 0.2)'],
-          borderColor: ['rgba(212, 165, 116, 0.8)', 'rgba(196, 154, 108, 0.1)'],
+          backgroundColor: ['#e8c49a', 'rgba(196, 154, 108, 0.15)'],
+          borderColor: ['rgba(232, 196, 154, 0.9)', 'rgba(196, 154, 108, 0.08)'],
           borderWidth: 2,
-          hoverBackgroundColor: ['#c49a6c', 'rgba(196, 154, 108, 0.35)'],
-          hoverBorderColor: ['#d4a574', 'rgba(196, 154, 108, 0.3)'],
-          spacing: 4,
-          borderRadius: 6,
+          hoverBackgroundColor: ['#f5ede3', 'rgba(196, 154, 108, 0.3)'],
+          hoverBorderColor: ['#e8c49a', 'rgba(196, 154, 108, 0.25)'],
+          spacing: 5,
+          borderRadius: 8,
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        cutout: '68%',
+        cutout: '70%',
         plugins: {
           legend: {
             position: 'bottom',
@@ -248,18 +262,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           },
           tooltip: {
-            backgroundColor: 'rgba(26, 14, 4, 0.9)',
-            titleColor: '#d4a574',
+            backgroundColor: 'rgba(13, 7, 4, 0.95)',
+            titleColor: '#e8c49a',
             bodyColor: '#f5ede3',
-            borderColor: 'rgba(196, 154, 108, 0.3)',
+            borderColor: 'rgba(232, 196, 154, 0.3)',
             borderWidth: 1,
-            cornerRadius: 10,
-            padding: 12,
+            cornerRadius: 12,
+            padding: 14,
             displayColors: true,
             callbacks: {
-              label: function(context) {
-                return ' ' + context.label + ': ' + context.parsed + '%';
-              }
+              label: (context) => ' ' + context.label + ': ' + context.parsed + '%'
             }
           }
         }
@@ -269,24 +281,23 @@ document.addEventListener('DOMContentLoaded', () => {
         beforeDraw: function(chart) {
           const { width, height, ctx } = chart;
           ctx.restore();
-          const text = '77.5%';
-          const subtext = 'New';
-          ctx.font = '700 28px "Playfair Display", serif';
-          ctx.fillStyle = '#d4a574';
+          ctx.font = '700 30px "Playfair Display", serif';
+          ctx.fillStyle = '#e8c49a';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-          ctx.fillText(text, width / 2, centerY - 10);
+          ctx.fillText('77.5%', width / 2, centerY - 10);
           ctx.font = '500 12px "Inter", sans-serif';
           ctx.fillStyle = 'rgba(245, 237, 227, 0.5)';
-          ctx.fillText(subtext + ' Audience', width / 2, centerY + 16);
+          ctx.fillText('New Audience', width / 2, centerY + 16);
           ctx.save();
         }
       }]
     });
   }
 
-  // ---- Video Placeholder Click Handlers ----
+
+  // ---- Video Placeholder Click ----
   document.querySelectorAll('.video-placeholder').forEach(placeholder => {
     placeholder.addEventListener('click', function() {
       const videoWrapper = this.closest('.video-wrapper');
@@ -298,29 +309,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---- Smooth scroll for anchor links ----
+
+  // ---- Smooth scroll for anchors ----
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // ---- Parallax-like subtle effect on hero ----
+
+  // ---- Hero Parallax ----
   const hero = document.querySelector('.hero');
   if (hero) {
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
       const heroContent = hero.querySelector('.hero-content');
       if (heroContent && scrolled < window.innerHeight) {
-        heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
+        heroContent.style.transform = `translateY(${scrolled * 0.12}px)`;
         heroContent.style.opacity = 1 - (scrolled / (window.innerHeight * 0.8));
       }
     }, { passive: true });
   }
+
 
   // ---- Initial dot update ----
   updateActiveDot();

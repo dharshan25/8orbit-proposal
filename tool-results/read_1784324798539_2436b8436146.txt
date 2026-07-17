@@ -1,0 +1,1370 @@
+     1→/* ============================================
+     2→   8ORBIT STUDIOS — Proposal Page
+     3→   Premium Healthcare Digital Growth Presentation
+     4→   ============================================ */
+     5→
+     6→/* --- Custom Properties --- */
+     7→:root {
+     8→  /* Core Brand Colors */
+     9→  --dark-brown: #603813;
+    10→  --deep-brown: #4a2a0e;
+    11→  --medium-brown: #7a4b1f;
+    12→  --light-brown: #b29f94;
+    13→  --warm-taupe: #c4b5a8;
+    14→  --cream: #f5ede3;
+    15→  --off-white: #faf8f5;
+    16→  --pure-white: #ffffff;
+    17→
+    18→  /* Accent Colors */
+    19→  --gold: #c49a6c;
+    20→  --gold-light: #d4a574;
+    21→  --gold-dark: #a07840;
+    22→  --gold-glow: rgba(196, 154, 108, 0.4);
+    23→
+    24→  /* Neutral */
+    25→  --text-dark: #2c1810;
+    26→  --text-medium: #5c4033;
+    27→  --text-light: #f5ede3;
+    28→  --text-muted: rgba(245, 237, 227, 0.6);
+    29→
+    30→  /* Glassmorphism */
+    31→  --glass-bg: rgba(96, 56, 19, 0.15);
+    32→  --glass-border: rgba(196, 154, 108, 0.2);
+    33→  --glass-bg-light: rgba(245, 237, 227, 0.08);
+    34→
+    35→  /* Shadows */
+    36→  --shadow-sm: 0 2px 8px rgba(44, 24, 16, 0.08);
+    37→  --shadow-md: 0 4px 24px rgba(44, 24, 16, 0.12);
+    38→  --shadow-lg: 0 8px 48px rgba(44, 24, 16, 0.16);
+    39→  --shadow-gold: 0 4px 32px rgba(196, 154, 108, 0.25);
+    40→
+    41→  /* Typography */
+    42→  --font-heading: 'Playfair Display', Georgia, serif;
+    43→  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    44→
+    45→  /* Spacing */
+    46→  --section-padding: 120px;
+    47→  --container-max: 1200px;
+    48→
+    49→  /* Transitions */
+    50→  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    51→  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    52→}
+    53→
+    54→/* --- Reset & Base --- */
+    55→*,
+    56→*::before,
+    57→*::after {
+    58→  margin: 0;
+    59→  padding: 0;
+    60→  box-sizing: border-box;
+    61→}
+    62→
+    63→html {
+    64→  scroll-behavior: smooth;
+    65→  font-size: 16px;
+    66→  -webkit-font-smoothing: antialiased;
+    67→  -moz-osx-font-smoothing: grayscale;
+    68→}
+    69→
+    70→body {
+    71→  font-family: var(--font-body);
+    72→  color: var(--text-dark);
+    73→  background: var(--dark-brown);
+    74→  overflow-x: hidden;
+    75→  line-height: 1.7;
+    76→}
+    77→
+    78→img, video {
+    79→  max-width: 100%;
+    80→  display: block;
+    81→}
+    82→
+    83→a {
+    84→  text-decoration: none;
+    85→  color: inherit;
+    86→}
+    87→
+    88→/* --- Custom Scrollbar --- */
+    89→::-webkit-scrollbar {
+    90→  width: 6px;
+    91→}
+    92→
+    93→::-webkit-scrollbar-track {
+    94→  background: var(--deep-brown);
+    95→}
+    96→
+    97→::-webkit-scrollbar-thumb {
+    98→  background: var(--gold);
+    99→  border-radius: 3px;
+   100→}
+   101→
+   102→::-webkit-scrollbar-thumb:hover {
+   103→  background: var(--gold-light);
+   104→}
+   105→
+   106→/* --- Noise Texture Overlay --- */
+   107→body::before {
+   108→  content: '';
+   109→  position: fixed;
+   110→  top: 0;
+   111→  left: 0;
+   112→  width: 100%;
+   113→  height: 100%;
+   114→  pointer-events: none;
+   115→  z-index: 9999;
+   116→  opacity: 0.03;
+   117→  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+   118→}
+   119→
+   120→/* --- Container --- */
+   121→.container {
+   122→  max-width: var(--container-max);
+   123→  margin: 0 auto;
+   124→  padding: 0 40px;
+   125→}
+   126→
+   127→/* --- Section Base --- */
+   128→.section {
+   129→  position: relative;
+   130→  padding: var(--section-padding) 0;
+   131→  overflow: hidden;
+   132→}
+   133→
+   134→.section-dark {
+   135→  background: linear-gradient(135deg, var(--deep-brown) 0%, var(--dark-brown) 50%, #4a2a0e 100%);
+   136→  color: var(--text-light);
+   137→}
+   138→
+   139→.section-light {
+   140→  background: var(--off-white);
+   141→  color: var(--text-dark);
+   142→}
+   143→
+   144→.section-gradient {
+   145→  background: linear-gradient(135deg, var(--dark-brown) 0%, var(--medium-brown) 50%, var(--light-brown) 100%);
+   146→  color: var(--text-light);
+   147→}
+   148→
+   149→.section-cream {
+   150→  background: var(--cream);
+   151→  color: var(--text-dark);
+   152→}
+   153→
+   154→/* --- Section Label --- */
+   155→.section-label {
+   156→  display: inline-flex;
+   157→  align-items: center;
+   158→  gap: 10px;
+   159→  font-size: 0.75rem;
+   160→  font-weight: 600;
+   161→  letter-spacing: 3px;
+   162→  text-transform: uppercase;
+   163→  color: var(--gold);
+   164→  margin-bottom: 20px;
+   165→}
+   166→
+   167→.section-label::before {
+   168→  content: '';
+   169→  display: block;
+   170→  width: 32px;
+   171→  height: 1px;
+   172→  background: var(--gold);
+   173→}
+   174→
+   175→.section-dark .section-label {
+   176→  color: var(--gold-light);
+   177→}
+   178→
+   179→.section-dark .section-label::before {
+   180→  background: var(--gold-light);
+   181→}
+   182→
+   183→/* --- Section Title --- */
+   184→.section-title {
+   185→  font-family: var(--font-heading);
+   186→  font-size: clamp(2.2rem, 5vw, 3.5rem);
+   187→  font-weight: 700;
+   188→  line-height: 1.2;
+   189→  margin-bottom: 24px;
+   190→}
+   191→
+   192→.section-dark .section-title {
+   193→  color: var(--text-light);
+   194→}
+   195→
+   196→.section-subtitle {
+   197→  font-size: 1.1rem;
+   198→  line-height: 1.8;
+   199→  max-width: 640px;
+   200→  opacity: 0.8;
+   201→}
+   202→
+   203→.section-dark .section-subtitle {
+   204→  color: var(--text-muted);
+   205→}
+   206→
+   207→/* --- Reveal Animations --- */
+   208→.reveal {
+   209→  opacity: 0;
+   210→  transform: translateY(40px);
+   211→  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+   212→}
+   213→
+   214→.reveal.active {
+   215→  opacity: 1;
+   216→  transform: translateY(0);
+   217→}
+   218→
+   219→.reveal-delay-1 { transition-delay: 0.1s; }
+   220→.reveal-delay-2 { transition-delay: 0.2s; }
+   221→.reveal-delay-3 { transition-delay: 0.3s; }
+   222→.reveal-delay-4 { transition-delay: 0.4s; }
+   223→.reveal-delay-5 { transition-delay: 0.5s; }
+   224→.reveal-delay-6 { transition-delay: 0.6s; }
+   225→
+   226→.reveal-scale {
+   227→  opacity: 0;
+   228→  transform: scale(0.9);
+   229→  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+   230→}
+   231→
+   232→.reveal-scale.active {
+   233→  opacity: 1;
+   234→  transform: scale(1);
+   235→}
+   236→
+   237→/* --- Gradient Text --- */
+   238→.gradient-text {
+   239→  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--warm-taupe));
+   240→  -webkit-background-clip: text;
+   241→  -webkit-text-fill-color: transparent;
+   242→  background-clip: text;
+   243→}
+   244→
+   245→.gradient-text-light {
+   246→  background: linear-gradient(135deg, #f5ede3, #d4a574, #b29f94);
+   247→  -webkit-background-clip: text;
+   248→  -webkit-text-fill-color: transparent;
+   249→  background-clip: text;
+   250→}
+   251→
+   252→/* ============================================
+   253→   NAVIGATION DOTS (Side)
+   254→   ============================================ */
+   255→.nav-dots {
+   256→  position: fixed;
+   257→  right: 28px;
+   258→  top: 50%;
+   259→  transform: translateY(-50%);
+   260→  z-index: 1000;
+   261→  display: flex;
+   262→  flex-direction: column;
+   263→  gap: 14px;
+   264→}
+   265→
+   266→.nav-dot {
+   267→  width: 10px;
+   268→  height: 10px;
+   269→  border-radius: 50%;
+   270→  background: rgba(196, 154, 108, 0.25);
+   271→  border: 1px solid rgba(196, 154, 108, 0.3);
+   272→  cursor: pointer;
+   273→  transition: all 0.4s var(--ease-smooth);
+   274→  position: relative;
+   275→}
+   276→
+   277→.nav-dot:hover {
+   278→  background: rgba(196, 154, 108, 0.5);
+   279→  transform: scale(1.3);
+   280→}
+   281→
+   282→.nav-dot.active {
+   283→  background: var(--gold);
+   284→  border-color: var(--gold);
+   285→  box-shadow: 0 0 12px var(--gold-glow);
+   286→  transform: scale(1.2);
+   287→}
+   288→
+   289→.nav-dot-label {
+   290→  position: absolute;
+   291→  right: 24px;
+   292→  top: 50%;
+   293→  transform: translateY(-50%);
+   294→  white-space: nowrap;
+   295→  font-size: 0.7rem;
+   296→  letter-spacing: 1px;
+   297→  text-transform: uppercase;
+   298→  color: var(--gold-light);
+   299→  opacity: 0;
+   300→  pointer-events: none;
+   301→  transition: opacity 0.3s, transform 0.3s;
+   302→  transform: translateY(-50%) translateX(8px);
+   303→}
+   304→
+   305→.nav-dot:hover .nav-dot-label {
+   306→  opacity: 1;
+   307→  transform: translateY(-50%) translateX(0);
+   308→}
+   309→
+   310→/* ============================================
+   311→   HERO SECTION
+   312→   ============================================ */
+   313→.hero {
+   314→  position: relative;
+   315→  min-height: 100vh;
+   316→  display: flex;
+   317→  align-items: center;
+   318→  justify-content: center;
+   319→  text-align: center;
+   320→  background: radial-gradient(ellipse at 30% 50%, #7a4b1f 0%, var(--deep-brown) 50%, #1a0e04 100%);
+   321→  overflow: hidden;
+   322→}
+   323→
+   324→/* Animated gradient orbs */
+   325→.hero::before {
+   326→  content: '';
+   327→  position: absolute;
+   328→  width: 600px;
+   329→  height: 600px;
+   330→  background: radial-gradient(circle, rgba(196, 154, 108, 0.12) 0%, transparent 70%);
+   331→  top: -100px;
+   332→  right: -100px;
+   333→  animation: floatOrb 12s ease-in-out infinite;
+   334→}
+   335→
+   336→.hero::after {
+   337→  content: '';
+   338→  position: absolute;
+   339→  width: 500px;
+   340→  height: 500px;
+   341→  background: radial-gradient(circle, rgba(178, 159, 148, 0.08) 0%, transparent 70%);
+   342→  bottom: -80px;
+   343→  left: -80px;
+   344→  animation: floatOrb 15s ease-in-out infinite reverse;
+   345→}
+   346→
+   347→@keyframes floatOrb {
+   348→  0%, 100% { transform: translate(0, 0) scale(1); }
+   349→  33% { transform: translate(30px, -30px) scale(1.1); }
+   350→  66% { transform: translate(-20px, 20px) scale(0.95); }
+   351→}
+   352→
+   353→.hero-content {
+   354→  position: relative;
+   355→  z-index: 2;
+   356→  padding: 0 40px;
+   357→}
+   358→
+   359→.hero-logo {
+   360→  font-family: var(--font-heading);
+   361→  font-size: clamp(4rem, 12vw, 8rem);
+   362→  font-weight: 700;
+   363→  letter-spacing: -2px;
+   364→  line-height: 1;
+   365→  margin-bottom: 8px;
+   366→}
+   367→
+   368→.hero-logo-suffix {
+   369→  font-family: var(--font-body);
+   370→  font-size: clamp(0.9rem, 2vw, 1.2rem);
+   371→  font-weight: 300;
+   372→  letter-spacing: 12px;
+   373→  text-transform: uppercase;
+   374→  color: var(--gold);
+   375→  margin-bottom: 40px;
+   376→  display: block;
+   377→}
+   378→
+   379→.hero-tagline {
+   380→  font-family: var(--font-heading);
+   381→  font-size: clamp(1.3rem, 3vw, 2rem);
+   382→  font-weight: 400;
+   383→  color: var(--warm-taupe);
+   384→  max-width: 700px;
+   385→  margin: 0 auto 16px;
+   386→  line-height: 1.4;
+   387→}
+   388→
+   389→.hero-sub {
+   390→  font-size: 1rem;
+   391→  color: var(--text-muted);
+   392→  max-width: 500px;
+   393→  margin: 0 auto;
+   394→  line-height: 1.8;
+   395→}
+   396→
+   397→/* Scroll indicator */
+   398→.scroll-indicator {
+   399→  position: absolute;
+   400→  bottom: 40px;
+   401→  left: 50%;
+   402→  transform: translateX(-50%);
+   403→  display: flex;
+   404→  flex-direction: column;
+   405→  align-items: center;
+   406→  gap: 8px;
+   407→  color: var(--text-muted);
+   408→  font-size: 0.7rem;
+   409→  letter-spacing: 2px;
+   410→  text-transform: uppercase;
+   411→  animation: pulse 2s ease-in-out infinite;
+   412→}
+   413→
+   414→.scroll-line {
+   415→  width: 1px;
+   416→  height: 40px;
+   417→  background: linear-gradient(to bottom, var(--gold), transparent);
+   418→  animation: scrollLine 2s ease-in-out infinite;
+   419→}
+   420→
+   421→@keyframes pulse {
+   422→  0%, 100% { opacity: 0.4; }
+   423→  50% { opacity: 1; }
+   424→}
+   425→
+   426→@keyframes scrollLine {
+   427→  0% { transform: scaleY(0); transform-origin: top; }
+   428→  50% { transform: scaleY(1); transform-origin: top; }
+   429→  51% { transform: scaleY(1); transform-origin: bottom; }
+   430→  100% { transform: scaleY(0); transform-origin: bottom; }
+   431→}
+   432→
+   433→/* ============================================
+   434→   PROBLEM / OPPORTUNITY SECTION
+   435→   ============================================ */
+   436→.opportunity-stats {
+   437→  display: grid;
+   438→  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   439→  gap: 24px;
+   440→  margin-top: 60px;
+   441→}
+   442→
+   443→.stat-card {
+   444→  background: var(--glass-bg);
+   445→  border: 1px solid var(--glass-border);
+   446→  border-radius: 16px;
+   447→  padding: 36px 28px;
+   448→  text-align: center;
+   449→  backdrop-filter: blur(12px);
+   450→  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+   451→}
+   452→
+   453→.stat-card:hover {
+   454→  transform: translateY(-4px);
+   455→  box-shadow: var(--shadow-gold);
+   456→}
+   457→
+   458→.stat-number {
+   459→  font-family: var(--font-heading);
+   460→  font-size: 2.8rem;
+   461→  font-weight: 700;
+   462→  color: var(--gold-light);
+   463→  line-height: 1;
+   464→  margin-bottom: 8px;
+   465→}
+   466→
+   467→.stat-label {
+   468→  font-size: 0.85rem;
+   469→  color: var(--text-muted);
+   470→  line-height: 1.5;
+   471→}
+   472→
+   473→/* ============================================
+   474→   CASE STUDY INTRO
+   475→   ============================================ */
+   476→.case-study-badge {
+   477→  display: inline-flex;
+   478→  align-items: center;
+   479→  gap: 8px;
+   480→  background: rgba(196, 154, 108, 0.15);
+   481→  border: 1px solid rgba(196, 154, 108, 0.3);
+   482→  border-radius: 100px;
+   483→  padding: 8px 20px;
+   484→  font-size: 0.8rem;
+   485→  font-weight: 500;
+   486→  color: var(--gold-light);
+   487→  margin-bottom: 24px;
+   488→}
+   489→
+   490→.case-study-name {
+   491→  font-family: var(--font-heading);
+   492→  font-size: clamp(1.8rem, 4vw, 2.8rem);
+   493→  font-weight: 700;
+   494→  line-height: 1.2;
+   495→  margin-bottom: 16px;
+   496→}
+   497→
+   498→.case-study-desc {
+   499→  font-size: 1.05rem;
+   500→  color: var(--text-muted);
+   501→  max-width: 600px;
+   502→  line-height: 1.8;
+   503→}
+   504→
+   505→.time-badge {
+   506→  display: inline-flex;
+   507→  align-items: center;
+   508→  gap: 8px;
+   509→  margin-top: 24px;
+   510→  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+   511→  color: var(--deep-brown);
+   512→  padding: 12px 28px;
+   513→  border-radius: 100px;
+   514→  font-weight: 700;
+   515→  font-size: 0.95rem;
+   516→  letter-spacing: 0.5px;
+   517→}
+   518→
+   519→/* ============================================
+   520→   BEFORE / AFTER SECTION
+   521→   ============================================ */
+   522→.comparison-grid {
+   523→  display: grid;
+   524→  grid-template-columns: 1fr 1fr;
+   525→  gap: 40px;
+   526→  margin-top: 60px;
+   527→  align-items: start;
+   528→}
+   529→
+   530→.comparison-card {
+   531→  border-radius: 20px;
+   532→  overflow: hidden;
+   533→  transition: transform 0.5s var(--ease-smooth);
+   534→}
+   535→
+   536→.comparison-card:hover {
+   537→  transform: translateY(-4px);
+   538→}
+   539→
+   540→.comparison-card.before {
+   541→  background: rgba(0, 0, 0, 0.3);
+   542→  border: 1px solid rgba(255, 255, 255, 0.06);
+   543→}
+   544→
+   545→.comparison-card.after {
+   546→  background: var(--glass-bg);
+   547→  border: 1px solid var(--glass-border);
+   548→  box-shadow: var(--shadow-gold);
+   549→}
+   550→
+   551→.comparison-header {
+   552→  padding: 24px 28px 16px;
+   553→  display: flex;
+   554→  align-items: center;
+   555→  gap: 12px;
+   556→}
+   557→
+   558→.comparison-header .icon {
+   559→  width: 36px;
+   560→  height: 36px;
+   561→  border-radius: 10px;
+   562→  display: flex;
+   563→  align-items: center;
+   564→  justify-content: center;
+   565→  font-size: 1rem;
+   566→}
+   567→
+   568→.comparison-card.before .icon {
+   569→  background: rgba(255, 255, 255, 0.06);
+   570→  color: rgba(255, 255, 255, 0.4);
+   571→}
+   572→
+   573→.comparison-card.after .icon {
+   574→  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+   575→  color: var(--deep-brown);
+   576→}
+   577→
+   578→.comparison-header h3 {
+   579→  font-family: var(--font-heading);
+   580→  font-size: 1.3rem;
+   581→  font-weight: 600;
+   582→}
+   583→
+   584→.comparison-card.before h3 {
+   585→  color: rgba(255, 255, 255, 0.5);
+   586→}
+   587→
+   588→.comparison-card.after h3 {
+   589→  color: var(--gold-light);
+   590→}
+   591→
+   592→.comparison-image {
+   593→  margin: 0 20px;
+   594→  border-radius: 14px;
+   595→  overflow: hidden;
+   596→  aspect-ratio: 9 / 16;
+   597→  max-height: 480px;
+   598→  background: rgba(0, 0, 0, 0.2);
+   599→  position: relative;
+   600→}
+   601→
+   602→.comparison-image img {
+   603→  width: 100%;
+   604→  height: 100%;
+   605→  object-fit: cover;
+   606→}
+   607→
+   608→.comparison-image .placeholder-text {
+   609→  position: absolute;
+   610→  top: 50%;
+   611→  left: 50%;
+   612→  transform: translate(-50%, -50%);
+   613→  color: rgba(255, 255, 255, 0.2);
+   614→  font-size: 0.8rem;
+   615→  text-align: center;
+   616→  letter-spacing: 1px;
+   617→}
+   618→
+   619→.comparison-card.after .comparison-image {
+   620→  border: 1px solid var(--glass-border);
+   621→}
+   622→
+   623→.comparison-card.before .comparison-image {
+   624→  border: 1px solid rgba(255, 255, 255, 0.04);
+   625→}
+   626→
+   627→.comparison-metrics {
+   628→  padding: 20px 28px 28px;
+   629→  display: grid;
+   630→  grid-template-columns: 1fr 1fr;
+   631→  gap: 12px;
+   632→}
+   633→
+   634→.metric-item {
+   635→  display: flex;
+   636→  align-items: center;
+   637→  gap: 8px;
+   638→  font-size: 0.85rem;
+   639→}
+   640→
+   641→.comparison-card.before .metric-item {
+   642→  color: rgba(255, 255, 255, 0.3);
+   643→}
+   644→
+   645→.comparison-card.after .metric-item {
+   646→  color: var(--warm-taupe);
+   647→}
+   648→
+   649→.metric-item .check {
+   650→  color: var(--gold);
+   651→  font-size: 0.75rem;
+   652→}
+   653→
+   654→.metric-item .cross {
+   655→  color: rgba(255, 255, 255, 0.2);
+   656→  font-size: 0.75rem;
+   657→}
+   658→
+   659→/* Arrow between before and after */
+   660→.comparison-arrow {
+   661→  display: none;
+   662→}
+   663→
+   664→@media (min-width: 768px) {
+   665→  .comparison-grid {
+   666→    grid-template-columns: 1fr auto 1fr;
+   667→    align-items: center;
+   668→  }
+   669→  .comparison-arrow {
+   670→    display: flex;
+   671→    flex-direction: column;
+   672→    align-items: center;
+   673→    justify-content: center;
+   674→    gap: 8px;
+   675→    color: var(--gold);
+   676→    font-size: 1.5rem;
+   677→    animation: arrowPulse 2s ease-in-out infinite;
+   678→  }
+   679→}
+   680→
+   681→@keyframes arrowPulse {
+   682→  0%, 100% { opacity: 0.5; transform: translateX(0); }
+   683→  50% { opacity: 1; transform: translateX(4px); }
+   684→}
+   685→
+   686→/* ============================================
+   687→   RESULTS / COUNTERS SECTION
+   688→   ============================================ */
+   689→.counters-grid {
+   690→  display: grid;
+   691→  grid-template-columns: repeat(4, 1fr);
+   692→  gap: 24px;
+   693→  margin-top: 60px;
+   694→}
+   695→
+   696→.counter-card {
+   697→  text-align: center;
+   698→  padding: 40px 20px;
+   699→  border-radius: 20px;
+   700→  background: var(--glass-bg);
+   701→  border: 1px solid var(--glass-border);
+   702→  backdrop-filter: blur(12px);
+   703→  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+   704→}
+   705→
+   706→.counter-card:hover {
+   707→  transform: translateY(-6px);
+   708→  box-shadow: var(--shadow-gold);
+   709→}
+   710→
+   711→.counter-number {
+   712→  font-family: var(--font-heading);
+   713→  font-size: clamp(2.4rem, 4vw, 3.2rem);
+   714→  font-weight: 700;
+   715→  color: var(--gold-light);
+   716→  line-height: 1;
+   717→  margin-bottom: 4px;
+   718→}
+   719→
+   720→.counter-suffix {
+   721→  font-family: var(--font-heading);
+   722→  font-size: clamp(1rem, 2vw, 1.4rem);
+   723→  color: var(--gold);
+   724→}
+   725→
+   726→.counter-label {
+   727→  font-size: 0.85rem;
+   728→  color: var(--text-muted);
+   729→  margin-top: 8px;
+   730→  letter-spacing: 0.5px;
+   731→}
+   732→
+   733→/* ============================================
+   734→   ANALYTICS CHARTS SECTION
+   735→   ============================================ */
+   736→.charts-grid {
+   737→  display: grid;
+   738→  grid-template-columns: 2fr 1fr;
+   739→  gap: 32px;
+   740→  margin-top: 60px;
+   741→}
+   742→
+   743→.chart-card {
+   744→  background: var(--glass-bg);
+   745→  border: 1px solid var(--glass-border);
+   746→  border-radius: 20px;
+   747→  padding: 32px;
+   748→  backdrop-filter: blur(12px);
+   749→}
+   750→
+   751→.chart-card-title {
+   752→  font-family: var(--font-heading);
+   753→  font-size: 1.1rem;
+   754→  font-weight: 600;
+   755→  color: var(--text-light);
+   756→  margin-bottom: 24px;
+   757→  display: flex;
+   758→  align-items: center;
+   759→  gap: 10px;
+   760→}
+   761→
+   762→.chart-card-title .dot {
+   763→  width: 8px;
+   764→  height: 8px;
+   765→  border-radius: 50%;
+   766→  background: var(--gold);
+   767→}
+   768→
+   769→.chart-wrapper {
+   770→  position: relative;
+   771→  width: 100%;
+   772→}
+   773→
+   774→.chart-wrapper canvas {
+   775→  width: 100% !important;
+   776→}
+   777→
+   778→/* ============================================
+   779→   PROCESS / WORKFLOW SECTION
+   780→   ============================================ */
+   781→.process-timeline {
+   782→  display: flex;
+   783→  flex-direction: column;
+   784→  gap: 0;
+   785→  margin-top: 60px;
+   786→  max-width: 700px;
+   787→  margin-left: auto;
+   788→  margin-right: auto;
+   789→}
+   790→
+   791→.process-step {
+   792→  display: flex;
+   793→  gap: 24px;
+   794→  position: relative;
+   795→  padding-bottom: 40px;
+   796→}
+   797→
+   798→.process-step:last-child {
+   799→  padding-bottom: 0;
+   800→}
+   801→
+   802→.process-step-line {
+   803→  display: flex;
+   804→  flex-direction: column;
+   805→  align-items: center;
+   806→  flex-shrink: 0;
+   807→}
+   808→
+   809→.process-step-dot {
+   810→  width: 44px;
+   811→  height: 44px;
+   812→  border-radius: 14px;
+   813→  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+   814→  display: flex;
+   815→  align-items: center;
+   816→  justify-content: center;
+   817→  font-size: 1.1rem;
+   818→  color: var(--deep-brown);
+   819→  flex-shrink: 0;
+   820→  box-shadow: 0 4px 16px rgba(196, 154, 108, 0.3);
+   821→  position: relative;
+   822→  z-index: 2;
+   823→}
+   824→
+   825→.process-step-connector {
+   826→  width: 2px;
+   827→  flex: 1;
+   828→  background: linear-gradient(to bottom, var(--gold), var(--glass-border));
+   829→  margin-top: 8px;
+   830→}
+   831→
+   832→.process-step:last-child .process-step-connector {
+   833→  display: none;
+   834→}
+   835→
+   836→.process-step-content h3 {
+   837→  font-family: var(--font-heading);
+   838→  font-size: 1.2rem;
+   839→  font-weight: 600;
+   840→  color: var(--gold-light);
+   841→  margin-bottom: 6px;
+   842→  margin-top: 8px;
+   843→}
+   844→
+   845→.process-step-content p {
+   846→  font-size: 0.9rem;
+   847→  color: var(--text-muted);
+   848→  line-height: 1.7;
+   849→  max-width: 500px;
+   850→}
+   851→
+   852→/* ============================================
+   853→   VIDEO SHOWCASE SECTION
+   854→   ============================================ */
+   855→.videos-grid {
+   856→  display: grid;
+   857→  grid-template-columns: 1fr 1fr;
+   858→  gap: 32px;
+   859→  margin-top: 60px;
+   860→}
+   861→
+   862→.video-card {
+   863→  border-radius: 20px;
+   864→  overflow: hidden;
+   865→  background: var(--glass-bg);
+   866→  border: 1px solid var(--glass-border);
+   867→  transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth);
+   868→}
+   869→
+   870→.video-card:hover {
+   871→  transform: translateY(-6px);
+   872→  box-shadow: var(--shadow-gold);
+   873→}
+   874→
+   875→.video-wrapper {
+   876→  position: relative;
+   877→  aspect-ratio: 9 / 16;
+   878→  max-height: 520px;
+   879→  background: #000;
+   880→  overflow: hidden;
+   881→}
+   882→
+   883→.video-wrapper video {
+   884→  width: 100%;
+   885→  height: 100%;
+   886→  object-fit: cover;
+   887→}
+   888→
+   889→.video-placeholder {
+   890→  position: absolute;
+   891→  top: 0;
+   892→  left: 0;
+   893→  width: 100%;
+   894→  height: 100%;
+   895→  display: flex;
+   896→  flex-direction: column;
+   897→  align-items: center;
+   898→  justify-content: center;
+   899→  gap: 12px;
+   900→  background: rgba(0, 0, 0, 0.4);
+   901→  color: rgba(255, 255, 255, 0.4);
+   902→  font-size: 0.8rem;
+   903→  letter-spacing: 1px;
+   904→  cursor: pointer;
+   905→  transition: background 0.3s;
+   906→}
+   907→
+   908→.video-placeholder:hover {
+   909→  background: rgba(0, 0, 0, 0.2);
+   910→  color: rgba(255, 255, 255, 0.7);
+   911→}
+   912→
+   913→.video-placeholder .play-icon {
+   914→  width: 56px;
+   915→  height: 56px;
+   916→  border-radius: 50%;
+   917→  background: rgba(196, 154, 108, 0.9);
+   918→  display: flex;
+   919→  align-items: center;
+   920→  justify-content: center;
+   921→  color: var(--deep-brown);
+   922→  font-size: 1.2rem;
+   923→  transition: transform 0.3s var(--ease-bounce);
+   924→}
+   925→
+   926→.video-placeholder:hover .play-icon {
+   927→  transform: scale(1.1);
+   928→}
+   929→
+   930→.video-info {
+   931→  padding: 20px 24px;
+   932→}
+   933→
+   934→.video-info h3 {
+   935→  font-family: var(--font-heading);
+   936→  font-size: 1.05rem;
+   937→  font-weight: 600;
+   938→  color: var(--text-light);
+   939→  margin-bottom: 4px;
+   940→}
+   941→
+   942→.video-info p {
+   943→  font-size: 0.8rem;
+   944→  color: var(--text-muted);
+   945→}
+   946→
+   947→/* ============================================
+   948→   SERVICES SECTION
+   949→   ============================================ */
+   950→.services-grid {
+   951→  display: grid;
+   952→  grid-template-columns: repeat(3, 1fr);
+   953→  gap: 24px;
+   954→  margin-top: 60px;
+   955→}
+   956→
+   957→.service-card {
+   958→  background: var(--pure-white);
+   959→  border: 1px solid rgba(92, 64, 51, 0.08);
+   960→  border-radius: 20px;
+   961→  padding: 36px 28px;
+   962→  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+   963→}
+   964→
+   965→.service-card:hover {
+   966→  transform: translateY(-6px);
+   967→  box-shadow: var(--shadow-md);
+   968→}
+   969→
+   970→.service-icon {
+   971→  width: 52px;
+   972→  height: 52px;
+   973→  border-radius: 14px;
+   974→  background: linear-gradient(135deg, var(--dark-brown), var(--medium-brown));
+   975→  display: flex;
+   976→  align-items: center;
+   977→  justify-content: center;
+   978→  font-size: 1.3rem;
+   979→  color: var(--gold-light);
+   980→  margin-bottom: 20px;
+   981→}
+   982→
+   983→.service-card h3 {
+   984→  font-family: var(--font-heading);
+   985→  font-size: 1.15rem;
+   986→  font-weight: 600;
+   987→  color: var(--text-dark);
+   988→  margin-bottom: 10px;
+   989→}
+   990→
+   991→.service-card p {
+   992→  font-size: 0.88rem;
+   993→  color: var(--text-medium);
+   994→  line-height: 1.7;
+   995→  opacity: 0.8;
+   996→}
+   997→
+   998→.service-card ul {
+   999→  list-style: none;
+  1000→  margin-top: 14px;
+  1001→  display: flex;
+  1002→  flex-direction: column;
+  1003→  gap: 8px;
+  1004→}
+  1005→
+  1006→.service-card ul li {
+  1007→  font-size: 0.82rem;
+  1008→  color: var(--text-medium);
+  1009→  display: flex;
+  1010→  align-items: center;
+  1011→  gap: 8px;
+  1012→  opacity: 0.75;
+  1013→}
+  1014→
+  1015→.service-card ul li::before {
+  1016→  content: '→';
+  1017→  color: var(--gold);
+  1018→  font-size: 0.75rem;
+  1019→}
+  1020→
+  1021→/* ============================================
+  1022→   GROWTH FUNNEL SECTION
+  1023→   ============================================ */
+  1024→.funnel-container {
+  1025→  display: flex;
+  1026→  align-items: center;
+  1027→  justify-content: center;
+  1028→  gap: 0;
+  1029→  margin-top: 60px;
+  1030→  flex-wrap: wrap;
+  1031→}
+  1032→
+  1033→.funnel-step {
+  1034→  display: flex;
+  1035→  flex-direction: column;
+  1036→  align-items: center;
+  1037→  text-align: center;
+  1038→  flex: 1;
+  1039→  min-width: 100px;
+  1040→  max-width: 140px;
+  1041→  padding: 0 8px;
+  1042→}
+  1043→
+  1044→.funnel-icon {
+  1045→  width: 60px;
+  1046→  height: 60px;
+  1047→  border-radius: 16px;
+  1048→  background: var(--glass-bg);
+  1049→  border: 1px solid var(--glass-border);
+  1050→  display: flex;
+  1051→  align-items: center;
+  1052→  justify-content: center;
+  1053→  font-size: 1.4rem;
+  1054→  margin-bottom: 12px;
+  1055→  transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s;
+  1056→}
+  1057→
+  1058→.funnel-step:hover .funnel-icon {
+  1059→  transform: translateY(-4px);
+  1060→  box-shadow: var(--shadow-gold);
+  1061→}
+  1062→
+  1063→.funnel-step span {
+  1064→  font-size: 0.78rem;
+  1065→  color: var(--warm-taupe);
+  1066→  line-height: 1.4;
+  1067→  font-weight: 500;
+  1068→}
+  1069→
+  1070→.funnel-arrow {
+  1071→  color: var(--gold);
+  1072→  font-size: 1.2rem;
+  1073→  opacity: 0.5;
+  1074→  flex-shrink: 0;
+  1075→  padding: 0 4px;
+  1076→  align-self: flex-start;
+  1077→  margin-top: 14px;
+  1078→}
+  1079→
+  1080→/* ============================================
+  1081→   WHY CHOOSE US SECTION
+  1082→   ============================================ */
+  1083→.why-grid {
+  1084→  display: grid;
+  1085→  grid-template-columns: 1fr 1fr;
+  1086→  gap: 24px;
+  1087→  margin-top: 60px;
+  1088→}
+  1089→
+  1090→.why-card {
+  1091→  background: var(--glass-bg);
+  1092→  border: 1px solid var(--glass-border);
+  1093→  border-radius: 16px;
+  1094→  padding: 32px 28px;
+  1095→  backdrop-filter: blur(12px);
+  1096→  transition: transform 0.4s var(--ease-smooth), border-color 0.4s;
+  1097→}
+  1098→
+  1099→.why-card:hover {
+  1100→  transform: translateY(-4px);
+  1101→  border-color: var(--gold);
+  1102→}
+  1103→
+  1104→.why-card .why-icon {
+  1105→  font-size: 1.6rem;
+  1106→  margin-bottom: 16px;
+  1107→}
+  1108→
+  1109→.why-card h3 {
+  1110→  font-family: var(--font-heading);
+  1111→  font-size: 1.1rem;
+  1112→  font-weight: 600;
+  1113→  color: var(--gold-light);
+  1114→  margin-bottom: 8px;
+  1115→}
+  1116→
+  1117→.why-card p {
+  1118→  font-size: 0.88rem;
+  1119→  color: var(--text-muted);
+  1120→  line-height: 1.7;
+  1121→}
+  1122→
+  1123→/* ============================================
+  1124→   CTA SECTION
+  1125→   ============================================ */
+  1126→.cta-section {
+  1127→  position: relative;
+  1128→  padding: 140px 0;
+  1129→  text-align: center;
+  1130→  background: radial-gradient(ellipse at center, var(--medium-brown) 0%, var(--deep-brown) 60%, #1a0e04 100%);
+  1131→  overflow: hidden;
+  1132→}
+  1133→
+  1134→.cta-section::before {
+  1135→  content: '';
+  1136→  position: absolute;
+  1137→  width: 800px;
+  1138→  height: 800px;
+  1139→  background: radial-gradient(circle, rgba(196, 154, 108, 0.06) 0%, transparent 70%);
+  1140→  top: 50%;
+  1141→  left: 50%;
+  1142→  transform: translate(-50%, -50%);
+  1143→}
+  1144→
+  1145→.cta-title {
+  1146→  font-family: var(--font-heading);
+  1147→  font-size: clamp(2rem, 5vw, 3.2rem);
+  1148→  font-weight: 700;
+  1149→  color: var(--text-light);
+  1150→  margin-bottom: 16px;
+  1151→  position: relative;
+  1152→  z-index: 2;
+  1153→}
+  1154→
+  1155→.cta-subtitle {
+  1156→  font-size: 1.05rem;
+  1157→  color: var(--text-muted);
+  1158→  max-width: 500px;
+  1159→  margin: 0 auto 48px;
+  1160→  line-height: 1.8;
+  1161→  position: relative;
+  1162→  z-index: 2;
+  1163→}
+  1164→
+  1165→.cta-contact-grid {
+  1166→  display: flex;
+  1167→  justify-content: center;
+  1168→  gap: 24px;
+  1169→  flex-wrap: wrap;
+  1170→  position: relative;
+  1171→  z-index: 2;
+  1172→}
+  1173→
+  1174→.cta-contact-item {
+  1175→  display: flex;
+  1176→  align-items: center;
+  1177→  gap: 12px;
+  1178→  background: var(--glass-bg);
+  1179→  border: 1px solid var(--glass-border);
+  1180→  border-radius: 100px;
+  1181→  padding: 14px 28px;
+  1182→  backdrop-filter: blur(12px);
+  1183→  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s, border-color 0.3s;
+  1184→  cursor: pointer;
+  1185→}
+  1186→
+  1187→.cta-contact-item:hover {
+  1188→  transform: translateY(-3px);
+  1189→  box-shadow: var(--shadow-gold);
+  1190→  border-color: var(--gold);
+  1191→}
+  1192→
+  1193→.cta-contact-item .cta-icon {
+  1194→  width: 36px;
+  1195→  height: 36px;
+  1196→  border-radius: 50%;
+  1197→  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  1198→  display: flex;
+  1199→  align-items: center;
+  1200→  justify-content: center;
+  1201→  font-size: 0.9rem;
+  1202→  color: var(--deep-brown);
+  1203→  flex-shrink: 0;
+  1204→}
+  1205→
+  1206→.cta-contact-item .cta-text {
+  1207→  text-align: left;
+  1208→}
+  1209→
+  1210→.cta-contact-item .cta-label {
+  1211→  font-size: 0.65rem;
+  1212→  text-transform: uppercase;
+  1213→  letter-spacing: 1.5px;
+  1214→  color: var(--text-muted);
+  1215→  margin-bottom: 2px;
+  1216→}
+  1217→
+  1218→.cta-contact-item .cta-value {
+  1219→  font-size: 0.92rem;
+  1220→  color: var(--text-light);
+  1221→  font-weight: 500;
+  1222→}
+  1223→
+  1224→.cta-brand {
+  1225→  margin-top: 64px;
+  1226→  position: relative;
+  1227→  z-index: 2;
+  1228→}
+  1229→
+  1230→.cta-brand-name {
+  1231→  font-family: var(--font-heading);
+  1232→  font-size: 1.4rem;
+  1233→  font-weight: 700;
+  1234→  color: var(--gold);
+  1235→  margin-bottom: 4px;
+  1236→}
+  1237→
+  1238→.cta-brand-tagline {
+  1239→  font-size: 0.78rem;
+  1240→  color: var(--text-muted);
+  1241→  letter-spacing: 2px;
+  1242→  text-transform: uppercase;
+  1243→}
+  1244→
+  1245→/* ============================================
+  1246→   SECTION DIVIDER
+  1247→   ============================================ */
+  1248→.section-divider {
+  1249→  width: 100%;
+  1250→  height: 1px;
+  1251→  background: linear-gradient(to right, transparent, var(--glass-border), transparent);
+  1252→  margin: 0 auto;
+  1253→}
+  1254→
+  1255→/* ============================================
+  1256→   RESPONSIVE
+  1257→   ============================================ */
+  1258→@media (max-width: 1024px) {
+  1259→  :root {
+  1260→    --section-padding: 80px;
+  1261→  }
+  1262→
+  1263→  .counters-grid {
+  1264→    grid-template-columns: repeat(2, 1fr);
+  1265→  }
+  1266→
+  1267→  .charts-grid {
+  1268→    grid-template-columns: 1fr;
+  1269→  }
+  1270→
+  1271→  .services-grid {
+  1272→    grid-template-columns: repeat(2, 1fr);
+  1273→  }
+  1274→
+  1275→  .why-grid {
+  1276→    grid-template-columns: 1fr;
+  1277→  }
+  1278→}
+  1279→
+  1280→@media (max-width: 768px) {
+  1281→  :root {
+  1282→    --section-padding: 60px;
+  1283→  }
+  1284→
+  1285→  .container {
+  1286→    padding: 0 20px;
+  1287→  }
+  1288→
+  1289→  .comparison-grid {
+  1290→    grid-template-columns: 1fr;
+  1291→    gap: 24px;
+  1292→  }
+  1293→
+  1294→  .comparison-arrow {
+  1295→    display: none;
+  1296→  }
+  1297→
+  1298→  .comparison-grid {
+  1299→    grid-template-columns: 1fr;
+  1300→  }
+  1301→
+  1302→  .videos-grid {
+  1303→    grid-template-columns: 1fr;
+  1304→  }
+  1305→
+  1306→  .counters-grid {
+  1307→    grid-template-columns: repeat(2, 1fr);
+  1308→    gap: 16px;
+  1309→  }
+  1310→
+  1311→  .services-grid {
+  1312→    grid-template-columns: 1fr;
+  1313→  }
+  1314→
+  1315→  .nav-dots {
+  1316→    right: 12px;
+  1317→    gap: 10px;
+  1318→  }
+  1319→
+  1320→  .nav-dot {
+  1321→    width: 8px;
+  1322→    height: 8px;
+  1323→  }
+  1324→
+  1325→  .nav-dot-label {
+  1326→    display: none;
+  1327→  }
+  1328→
+  1329→  .funnel-container {
+  1330→    gap: 0;
+  1331→  }
+  1332→
+  1333→  .funnel-step {
+  1334→    min-width: 70px;
+  1335→  }
+  1336→
+  1337→  .funnel-arrow {
+  1338→    font-size: 0.8rem;
+  1339→  }
+  1340→
+  1341→  .cta-contact-grid {
+  1342→    flex-direction: column;
+  1343→    align-items: center;
+  1344→  }
+  1345→
+  1346→  .cta-contact-item {
+  1347→    width: 100%;
+  1348→    max-width: 360px;
+  1349→    justify-content: center;
+  1350→  }
+  1351→
+  1352→  .opportunity-stats {
+  1353→    grid-template-columns: 1fr;
+  1354→  }
+  1355→}
+  1356→
+  1357→@media (max-width: 480px) {
+  1358→  .counters-grid {
+  1359→    grid-template-columns: 1fr 1fr;
+  1360→    gap: 12px;
+  1361→  }
+  1362→
+  1363→  .counter-card {
+  1364→    padding: 28px 16px;
+  1365→  }
+  1366→
+  1367→  .hero-logo {
+  1368→    font-size: 3.5rem;
+  1369→  }
+  1370→}
