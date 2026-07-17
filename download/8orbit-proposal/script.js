@@ -1,9 +1,38 @@
 /* ============================================
-   8ORBIT STUDIOS — Proposal Page Scripts V2
-   Alive + Interactive
+   8ORBIT STUDIOS — Proposal Page Scripts V3
+   Alive + Interactive + Cursor Glow
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ---- Cursor Glow Follower ----
+  const cursorGlow = document.querySelector('.cursor-glow');
+  let mouseX = 0, mouseY = 0;
+  let glowX = 0, glowY = 0;
+
+  if (cursorGlow) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!cursorGlow.classList.contains('active')) {
+        cursorGlow.classList.add('active');
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.classList.remove('active');
+    });
+
+    function animateGlow() {
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
+      cursorGlow.style.left = glowX + 'px';
+      cursorGlow.style.top = glowY + 'px';
+      requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+  }
+
 
   // ---- Scroll Reveal Animations ----
   const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
@@ -13,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
   revealElements.forEach(el => revealObserver.observe(el));
 
 
-  // ---- 3D Tilt on Glass Cards ----
+  // ---- 3D Tilt + Light Tracking on Glass Cards ----
   const glassCards = document.querySelectorAll('.glass, .glass-light');
   glassCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -26,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -6;
-      const rotateY = ((x - centerX) / centerX) * 6;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
       card.style.transform = `translateY(-6px) scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
     card.addEventListener('mouseleave', () => {
@@ -45,7 +74,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const centerY = rect.height / 2;
       const rotateX = ((y - centerY) / centerY) * -4;
       const rotateY = ((x - centerX) / centerX) * 4;
-      card.style.transform = `translateY(-8px) scale(1.02) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      card.style.transform = `translateY(-10px) scale(1.02) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ---- 3D Tilt on Video Cards ----
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -3;
+      const rotateY = ((x - centerX) / centerX) * 3;
+      card.style.transform = `translateY(-10px) scale(1.02) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';
@@ -153,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const { ctx: c, chartArea } = chart;
             if (!chartArea) return 'rgba(232, 196, 154, 0.1)';
             const gradient = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-            gradient.addColorStop(0, 'rgba(232, 196, 154, 0.3)');
-            gradient.addColorStop(0.5, 'rgba(196, 154, 108, 0.1)');
+            gradient.addColorStop(0, 'rgba(232, 196, 154, 0.25)');
+            gradient.addColorStop(0.5, 'rgba(196, 154, 108, 0.08)');
             gradient.addColorStop(1, 'rgba(196, 154, 108, 0.01)');
             return gradient;
           },
@@ -194,12 +240,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         scales: {
           x: {
-            grid: { color: 'rgba(232, 196, 154, 0.06)' },
+            grid: { color: 'rgba(232, 196, 154, 0.05)' },
             ticks: { color: 'rgba(245, 237, 227, 0.4)', font: { family: 'Inter', size: 11 } },
             border: { color: 'rgba(232, 196, 154, 0.08)' }
           },
           y: {
-            grid: { color: 'rgba(232, 196, 154, 0.06)' },
+            grid: { color: 'rgba(232, 196, 154, 0.05)' },
             ticks: {
               color: 'rgba(245, 237, 227, 0.4)',
               font: { family: 'Inter', size: 11 },
@@ -237,11 +283,11 @@ document.addEventListener('DOMContentLoaded', () => {
         labels: ['New Audience (Non-Followers)', 'Existing Followers'],
         datasets: [{
           data: [77.5, 22.5],
-          backgroundColor: ['#e8c49a', 'rgba(196, 154, 108, 0.15)'],
-          borderColor: ['rgba(232, 196, 154, 0.9)', 'rgba(196, 154, 108, 0.08)'],
+          backgroundColor: ['#e8c49a', 'rgba(196, 154, 108, 0.12)'],
+          borderColor: ['rgba(232, 196, 154, 0.9)', 'rgba(196, 154, 108, 0.06)'],
           borderWidth: 2,
-          hoverBackgroundColor: ['#f5ede3', 'rgba(196, 154, 108, 0.3)'],
-          hoverBorderColor: ['#e8c49a', 'rgba(196, 154, 108, 0.25)'],
+          hoverBackgroundColor: ['#f5ede3', 'rgba(196, 154, 108, 0.25)'],
+          hoverBorderColor: ['#e8c49a', 'rgba(196, 154, 108, 0.2)'],
           spacing: 5,
           borderRadius: 8,
         }]
@@ -332,6 +378,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: true });
   }
+
+
+  // ---- Orb Parallax on Scroll ----
+  const orbs = document.querySelectorAll('.floating-orb');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    orbs.forEach((orb, i) => {
+      const speed = (i % 3 + 1) * 0.02;
+      orb.style.marginTop = scrolled * speed * -1 + 'px';
+    });
+  }, { passive: true });
 
 
   // ---- Initial dot update ----

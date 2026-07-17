@@ -1,0 +1,555 @@
+     1→<!DOCTYPE html>
+     2→<html lang="en">
+     3→<head>
+     4→  <meta charset="UTF-8" />
+     5→  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     6→  <title>8orbit Studios — Digital Growth for Healthcare</title>
+     7→  <meta name="description" content="8orbit Studios helps healthcare professionals build a trusted digital presence that turns followers into patients." />
+     8→
+     9→  <!-- Fonts -->
+    10→  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    11→  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    12→  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    13→
+    14→  <!-- Chart.js -->
+    15→  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    16→
+    17→  <!-- Styles -->
+    18→  <link rel="stylesheet" href="style.css" />
+    19→</head>
+    20→<body>
+    21→
+    22→  <!-- ============================================
+    23→       SIDE NAVIGATION DOTS
+    24→       ============================================ -->
+    25→  <nav class="nav-dots" aria-label="Section navigation">
+    26→    <div class="nav-dot active" data-target="hero"><span class="nav-dot-label">Home</span></div>
+    27→    <div class="nav-dot" data-target="opportunity"><span class="nav-dot-label">Opportunity</span></div>
+    28→    <div class="nav-dot" data-target="case-study"><span class="nav-dot-label">Case Study</span></div>
+    29→    <div class="nav-dot" data-target="before-after"><span class="nav-dot-label">Transformation</span></div>
+    30→    <div class="nav-dot" data-target="results"><span class="nav-dot-label">Results</span></div>
+    31→    <div class="nav-dot" data-target="analytics"><span class="nav-dot-label">Analytics</span></div>
+    32→    <div class="nav-dot" data-target="process"><span class="nav-dot-label">Process</span></div>
+    33→    <div class="nav-dot" data-target="videos"><span class="nav-dot-label">Our Work</span></div>
+    34→    <div class="nav-dot" data-target="funnel"><span class="nav-dot-label">Growth System</span></div>
+    35→    <div class="nav-dot" data-target="services"><span class="nav-dot-label">Services</span></div>
+    36→    <div class="nav-dot" data-target="why-us"><span class="nav-dot-label">Why Us</span></div>
+    37→    <div class="nav-dot" data-target="contact"><span class="nav-dot-label">Contact</span></div>
+    38→  </nav>
+    39→
+    40→
+    41→  <!-- ============================================
+    42→       SECTION 1: HERO
+    43→       ============================================ -->
+    44→  <section class="hero section" id="hero">
+    45→    <div class="floating-orb orb-1"></div>
+    46→    <div class="floating-orb orb-2"></div>
+    47→    <div class="floating-orb orb-3"></div>
+    48→    <div class="hero-content">
+    49→      <div class="hero-logo gradient-text">8orbit</div>
+    50→      <span class="hero-logo-suffix">Studios</span>
+    51→      <h1 class="hero-tagline">Digital Growth for<br />Modern Healthcare</h1>
+    52→      <p class="hero-sub">We build digital trust that turns followers into patients. A complete growth system designed for doctors and clinics.</p>
+    53→    </div>
+    54→    <div class="scroll-indicator">
+    55→      <span>Scroll</span>
+    56→      <div class="scroll-line"></div>
+    57→    </div>
+    58→  </section>
+    59→
+    60→
+    61→  <!-- ============================================
+    62→       SECTION 2: THE OPPORTUNITY
+    63→       ============================================ -->
+    64→  <section class="section section-dark" id="opportunity">
+    65→    <div class="floating-orb orb-1" style="top: 10%; right: -5%;"></div>
+    66→    <div class="floating-orb orb-2" style="bottom: 5%; left: -8%;"></div>
+    67→    <div class="container">
+    68→      <div class="reveal">
+    69→        <span class="section-label">The Opportunity</span>
+    70→        <h2 class="section-title">What if patients already trusted you<br />before walking in?</h2>
+    71→        <p class="section-subtitle">The healthcare landscape has changed. Patients search online, watch videos, and form opinions about doctors before their first visit. A strong digital presence is no longer optional — it's the foundation of a thriving practice.</p>
+    72→      </div>
+    73→
+    74→      <div class="opportunity-stats">
+    75→        <div class="stat-card glass reveal reveal-delay-1">
+    76→          <div class="stat-number">80%+</div>
+    77→          <div class="stat-label">Patients research doctors online before booking an appointment</div>
+    78→        </div>
+    79→        <div class="stat-card glass reveal reveal-delay-2">
+    80→          <div class="stat-number">3x</div>
+    81→          <div class="stat-label">Higher recall for clinics with consistent educational content</div>
+    82→        </div>
+    83→        <div class="stat-card glass reveal reveal-delay-3">
+    84→          <div class="stat-number">70%</div>
+    85→          <div class="stat-label">Of patients trust a doctor more after seeing professional content</div>
+    86→        </div>
+    87→        <div class="stat-card glass reveal reveal-delay-4">
+    88→          <div class="stat-number">5x</div>
+    89→          <div class="stat-label">More engagement on educational content vs. promotional posts</div>
+    90→        </div>
+    91→      </div>
+    92→    </div>
+    93→  </section>
+    94→
+    95→
+    96→  <!-- ============================================
+    97→       SECTION 3: CASE STUDY INTRO
+    98→       ============================================ -->
+    99→  <section class="section section-gradient" id="case-study">
+   100→    <div class="floating-orb orb-3" style="top: -10%; left: 30%;"></div>
+   101→    <div class="floating-orb orb-1" style="bottom: -10%; right: 20%; animation-delay: -8s;"></div>
+   102→    <div class="container">
+   103→      <div class="reveal">
+   104→        <span class="section-label">Case Study</span>
+   105→        <div class="case-study-badge">Sukruthi Orthopedics &amp; Joint Clinic</div>
+   106→      </div>
+   107→      <div class="reveal reveal-delay-1">
+   108→        <h2 class="case-study-name">From Zero to a Trusted<br />Digital Presence in 17 Days</h2>
+   109→        <p class="case-study-desc">We took a clinic with no digital footprint — no posts, no followers, no branding — and transformed it into a professional, trust-building Instagram presence that reaches thousands of potential patients every month.</p>
+   110→        <div class="time-badge">Completed in 17 Days</div>
+   111→      </div>
+   112→    </div>
+   113→  </section>
+   114→
+   115→
+   116→  <!-- ============================================
+   117→       SECTION 4: BEFORE vs AFTER
+   118→       ============================================ -->
+   119→  <section class="section section-dark" id="before-after">
+   120→    <div class="floating-orb orb-2" style="top: 20%; left: -5%;"></div>
+   121→    <div class="floating-orb orb-1" style="bottom: 10%; right: -5%; animation-delay: -6s;"></div>
+   122→    <div class="container">
+   123→      <div class="reveal" style="text-align: center; margin-bottom: 20px;">
+   124→        <span class="section-label" style="justify-content: center;">The Transformation</span>
+   125→        <h2 class="section-title">What Changed</h2>
+   126→      </div>
+   127→
+   128→      <div class="comparison-grid">
+   129→        <!-- BEFORE -->
+   130→        <div class="comparison-card before reveal reveal-delay-1">
+   131→          <div class="comparison-header">
+   132→            <div class="icon">&#10005;</div>
+   133→            <h3>Before</h3>
+   134→          </div>
+   135→          <div class="comparison-image">
+   136→            <!--
+   137→              REPLACE: Add your "before" screenshot here
+   138→              <img src="assets/before.png" alt="Before - Empty profile" />
+   139→            -->
+   140→            <span class="placeholder-text">BEFORE SCREENSHOT<br /><small>assets/before.png</small></span>
+   141→          </div>
+   142→          <div class="comparison-metrics">
+   143→            <div class="metric-item"><span class="cross">&#10005;</span> 0 Posts</div>
+   144→            <div class="metric-item"><span class="cross">&#10005;</span> 1 Follower</div>
+   145→            <div class="metric-item"><span class="cross">&#10005;</span> No Branding</div>
+   146→            <div class="metric-item"><span class="cross">&#10005;</span> No Content</div>
+   147→          </div>
+   148→        </div>
+   149→
+   150→        <!-- ARROW -->
+   151→        <div class="comparison-arrow reveal-scale">&#10140;</div>
+   152→
+   153→        <!-- AFTER -->
+   154→        <div class="comparison-card after reveal reveal-delay-2">
+   155→          <div class="comparison-header">
+   156→            <div class="icon">&#10003;</div>
+   157→            <h3>After 17 Days</h3>
+   158→          </div>
+   159→          <div class="comparison-image">
+   160→            <!--
+   161→              REPLACE: Add your "after" screenshot here
+   162→              <img src="assets/after.png" alt="After - Professional profile" />
+   163→            -->
+   164→            <span class="placeholder-text">AFTER SCREENSHOT<br /><small>assets/after.png</small></span>
+   165→          </div>
+   166→          <div class="comparison-metrics">
+   167→            <div class="metric-item"><span class="check">&#10003;</span> 10 Posts</div>
+   168→            <div class="metric-item"><span class="check">&#10003;</span> 67 Followers</div>
+   169→            <div class="metric-item"><span class="check">&#10003;</span> Full Branding</div>
+   170→            <div class="metric-item"><span class="check">&#10003;</span> Pro Content</div>
+   171→          </div>
+   172→        </div>
+   173→      </div>
+   174→    </div>
+   175→  </section>
+   176→
+   177→
+   178→  <!-- ============================================
+   179→       SECTION 5: RESULTS / ANIMATED COUNTERS
+   180→       ============================================ -->
+   181→  <section class="section section-dark" id="results">
+   182→    <div class="floating-orb orb-1" style="top: -5%; right: 20%;"></div>
+   183→    <div class="floating-orb orb-3" style="bottom: 0; left: 10%;"></div>
+   184→    <div class="container">
+   185→      <div class="reveal" style="text-align: center;">
+   186→        <span class="section-label" style="justify-content: center;">The Results</span>
+   187→        <h2 class="section-title">Numbers That Matter</h2>
+   188→        <p class="section-subtitle" style="margin: 0 auto;">Achieved in just 17 days from a completely empty profile. Every number represents real people discovering the clinic for the first time.</p>
+   189→      </div>
+   190→
+   191→      <div class="counters-grid">
+   192→        <div class="counter-card glass reveal reveal-delay-1">
+   193→          <div class="counter-number"><span data-count="3007" data-suffix="">0</span></div>
+   194→          <div class="counter-label">Total Views</div>
+   195→        </div>
+   196→        <div class="counter-card glass reveal reveal-delay-2">
+   197→          <div class="counter-number"><span data-count="1362" data-suffix="">0</span></div>
+   198→          <div class="counter-label">Accounts Reached</div>
+   199→        </div>
+   200→        <div class="counter-card glass reveal reveal-delay-3">
+   201→          <div class="counter-number"><span data-count="77.5" data-suffix="%">0</span></div>
+   202→          <div class="counter-label">New Audience</div>
+   203→        </div>
+   204→        <div class="counter-card glass reveal reveal-delay-4">
+   205→          <div class="counter-number"><span data-count="10" data-suffix="">0</span></div>
+   206→          <div class="counter-label">Content Pieces</div>
+   207→        </div>
+   208→      </div>
+   209→    </div>
+   210→  </section>
+   211→
+   212→
+   213→  <!-- ============================================
+   214→       SECTION 6: ANALYTICS DASHBOARD
+   215→       ============================================ -->
+   216→  <section class="section section-dark" id="analytics">
+   217→    <div class="floating-orb orb-2" style="top: 30%; left: -8%;"></div>
+   218→    <div class="container">
+   219→      <div class="reveal">
+   220→        <span class="section-label">Analytics</span>
+   221→        <h2 class="section-title">Data-Driven Growth</h2>
+   222→        <p class="section-subtitle">Every decision we make is backed by real data. Here's a closer look at how the content performed over 17 days.</p>
+   223→      </div>
+   224→
+   225→      <div class="charts-grid">
+   226→        <div class="chart-card glass reveal reveal-delay-1">
+   227→          <div class="chart-card-title">
+   228→            <span class="dot"></span>
+   229→            Views Growth Over 17 Days
+   230→          </div>
+   231→          <div class="chart-wrapper" style="height: 300px;">
+   232→            <canvas id="viewsChart"></canvas>
+   233→          </div>
+   234→        </div>
+   235→        <div class="chart-card glass reveal reveal-delay-2">
+   236→          <div class="chart-card-title">
+   237→            <span class="dot"></span>
+   238→            Audience Composition
+   239→          </div>
+   240→          <div class="chart-wrapper" style="height: 300px;">
+   241→            <canvas id="audienceChart"></canvas>
+   242→          </div>
+   243→        </div>
+   244→      </div>
+   245→    </div>
+   246→  </section>
+   247→
+   248→
+   249→  <!-- ============================================
+   250→       SECTION 7: OUR PROCESS / WORKFLOW
+   251→       ============================================ -->
+   252→  <section class="section section-gradient" id="process">
+   253→    <div class="floating-orb orb-1" style="top: -5%; right: 10%;"></div>
+   254→    <div class="floating-orb orb-3" style="bottom: 10%; left: -5%; animation-delay: -4s;"></div>
+   255→    <div class="container">
+   256→      <div class="reveal" style="text-align: center;">
+   257→        <span class="section-label" style="justify-content: center;">Our Process</span>
+   258→        <h2 class="section-title">How We Make It Happen</h2>
+   259→        <p class="section-subtitle" style="margin: 0 auto;">We use cutting-edge technology to analyze, plan, and execute every piece of content. This isn't guesswork — it's a system built for consistent growth.</p>
+   260→      </div>
+   261→
+   262→      <div class="process-timeline">
+   263→        <div class="process-step reveal reveal-delay-1">
+   264→          <div class="process-step-line">
+   265→            <div class="process-step-dot">&#128269;</div>
+   266→            <div class="process-step-connector"></div>
+   267→          </div>
+   268→          <div class="process-step-content">
+   269→            <h3>Discovery &amp; Research</h3>
+   270→            <p>We analyze your specialty, local competition, target patient demographics, and current online presence to build a data-informed strategy.</p>
+   271→          </div>
+   272→        </div>
+   273→        <div class="process-step reveal reveal-delay-2">
+   274→          <div class="process-step-line">
+   275→            <div class="process-step-dot">&#128202;</div>
+   276→            <div class="process-step-connector"></div>
+   277→          </div>
+   278→          <div class="process-step-content">
+   279→            <h3>Strategy &amp; Content Plan</h3>
+   280→            <p>We create a tailored content calendar with educational topics, video concepts, and posting schedules designed for maximum patient engagement.</p>
+   281→          </div>
+   282→        </div>
+   283→        <div class="process-step reveal reveal-delay-3">
+   284→          <div class="process-step-line">
+   285→            <div class="process-step-dot">&#127909;</div>
+   286→            <div class="process-step-connector"></div>
+   287→          </div>
+   288→          <div class="process-step-content">
+   289→            <h3>Professional Video Production</h3>
+   290→            <p>From script to screen — we handle filming with proper lighting and audio, then edit with motion graphics, medical infographics, and branded elements.</p>
+   291→          </div>
+   292→        </div>
+   293→        <div class="process-step reveal reveal-delay-4">
+   294→          <div class="process-step-line">
+   295→            <div class="process-step-dot">&#127912;</div>
+   296→            <div class="process-step-connector"></div>
+   297→          </div>
+   298→          <div class="process-step-content">
+   299→            <h3>Design &amp; Branding</h3>
+   300→            <p>Every carousel, story, and post follows a cohesive visual identity — colors, typography, and layout that build instant recognition and trust.</p>
+   301→          </div>
+   302→        </div>
+   303→        <div class="process-step reveal reveal-delay-5">
+   304→          <div class="process-step-line">
+   305→            <div class="process-step-dot">&#128640;</div>
+   306→            <div class="process-step-connector"></div>
+   307→          </div>
+   308→          <div class="process-step-content">
+   309→            <h3>Publish &amp; Optimize</h3>
+   310→            <p>We publish at peak engagement times, optimize captions with relevant keywords, and use strategic hashtags to maximize discoverability.</p>
+   311→          </div>
+   312→        </div>
+   313→        <div class="process-step reveal reveal-delay-6">
+   314→          <div class="process-step-line">
+   315→            <div class="process-step-dot">&#128200;</div>
+   316→          </div>
+   317→          <div class="process-step-content">
+   318→            <h3>Analytics &amp; Iteration</h3>
+   319→            <p>We track views, reach, engagement, and audience growth — then refine the strategy based on real performance data every single week.</p>
+   320→          </div>
+   321→        </div>
+   322→      </div>
+   323→    </div>
+   324→  </section>
+   325→
+   326→
+   327→  <!-- ============================================
+   328→       SECTION 8: VIDEO SHOWCASE
+   329→       ============================================ -->
+   330→  <section class="section section-dark" id="videos">
+   331→    <div class="floating-orb orb-1" style="top: 5%; left: -10%;"></div>
+   332→    <div class="floating-orb orb-2" style="bottom: 0; right: -5%;"></div>
+   333→    <div class="container">
+   334→      <div class="reveal" style="text-align: center;">
+   335→        <span class="section-label" style="justify-content: center;">Our Work</span>
+   336→        <h2 class="section-title">Content We Create</h2>
+   337→        <p class="section-subtitle" style="margin: 0 auto;">Educational reels, doctor talking-head videos, and patient awareness content — all designed to build trust and drive engagement.</p>
+   338→      </div>
+   339→
+   340→      <div class="videos-grid">
+   341→        <div class="video-card reveal reveal-delay-1">
+   342→          <div class="video-wrapper">
+   343→            <!--
+   344→              REPLACE: Add your video file
+   345→              <video src="videos/reel2.mp4" muted loop playsinline poster="assets/video-poster-1.jpg"></video>
+   346→            -->
+   347→            <video muted loop playsinline></video>
+   348→            <div class="video-placeholder">
+   349→              <div class="play-icon">&#9654;</div>
+   350→              <span>REEL 2</span>
+   351→              <small style="opacity:0.5;">videos/reel2.mp4</small>
+   352→            </div>
+   353→          </div>
+   354→          <div class="video-info">
+   355→            <h3>Doctor Speaking Reel</h3>
+   356→            <p>Educational content — building authority and patient trust</p>
+   357→          </div>
+   358→        </div>
+   359→        <div class="video-card reveal reveal-delay-2">
+   360→          <div class="video-wrapper">
+   361→            <!--
+   362→              REPLACE: Add your video file
+   363→              <video src="videos/reel3.mp4" muted loop playsinline poster="assets/video-poster-2.jpg"></video>
+   364→            -->
+   365→            <video muted loop playsinline></video>
+   366→            <div class="video-placeholder">
+   367→              <div class="play-icon">&#9654;</div>
+   368→              <span>REEL 3</span>
+   369→              <small style="opacity:0.5;">videos/reel3.mp4</small>
+   370→            </div>
+   371→          </div>
+   372→          <div class="video-info">
+   373→            <h3>Patient Awareness Reel</h3>
+   374→            <p>Condition-specific education — answering real patient questions</p>
+   375→          </div>
+   376→        </div>
+   377→      </div>
+   378→    </div>
+   379→  </section>
+   380→
+   381→
+   382→  <!-- ============================================
+   383→       SECTION 9: GROWTH FUNNEL
+   384→       ============================================ -->
+   385→  <section class="section section-gradient" id="funnel">
+   386→    <div class="floating-orb orb-2" style="top: -10%; right: 30%;"></div>
+   387→    <div class="floating-orb orb-1" style="bottom: -5%; left: 15%; animation-delay: -12s;"></div>
+   388→    <div class="container">
+   389→      <div class="reveal" style="text-align: center;">
+   390→        <span class="section-label" style="justify-content: center;">The Growth System</span>
+   391→        <h2 class="section-title">How Everything Works Together</h2>
+   392→        <p class="section-subtitle" style="margin: 0 auto;">Every service we offer is a piece of a larger system designed to turn online visibility into actual patient appointments.</p>
+   393→      </div>
+   394→
+   395→      <div class="funnel-container reveal">
+   396→        <div class="funnel-step"><div class="funnel-icon">&#128269;</div><span>Google Search</span></div>
+   397→        <div class="funnel-arrow">&#8594;</div>
+   398→        <div class="funnel-step"><div class="funnel-icon">&#127760;</div><span>Clinic Website</span></div>
+   399→        <div class="funnel-arrow">&#8594;</div>
+   400→        <div class="funnel-step"><div class="funnel-icon">&#128241;</div><span>Instagram</span></div>
+   401→        <div class="funnel-arrow">&#8594;</div>
+   402→        <div class="funnel-step"><div class="funnel-icon">&#127891;</div><span>Educational Content</span></div>
+   403→        <div class="funnel-arrow">&#8594;</div>
+   404→        <div class="funnel-step"><div class="funnel-icon">&#128150;</div><span>Patient Trust</span></div>
+   405→        <div class="funnel-arrow">&#8594;</div>
+   406→        <div class="funnel-step"><div class="funnel-icon">&#128172;</div><span>WhatsApp Enquiry</span></div>
+   407→        <div class="funnel-arrow">&#8594;</div>
+   408→        <div class="funnel-step"><div class="funnel-icon">&#128197;</div><span>Appointment</span></div>
+   409→        <div class="funnel-arrow">&#8594;</div>
+   410→        <div class="funnel-step"><div class="funnel-icon">&#11088;</div><span>5-Star Review</span></div>
+   411→        <div class="funnel-arrow">&#8594;</div>
+   412→        <div class="funnel-step"><div class="funnel-icon">&#128200;</div><span>More Patients</span></div>
+   413→      </div>
+   414→    </div>
+   415→  </section>
+   416→
+   417→
+   418→  <!-- ============================================
+   419→       SECTION 10: SERVICES (Light)
+   420→       ============================================ -->
+   421→  <section class="section section-cream" id="services">
+   422→    <div class="floating-orb orb-1" style="top: 10%; right: -5%; opacity: 0.5; background: radial-gradient(circle, rgba(96, 56, 19, 0.08), transparent 70%);"></div>
+   423→    <div class="floating-orb orb-3" style="bottom: 5%; left: -8%; opacity: 0.4; background: radial-gradient(circle, rgba(160, 120, 64, 0.06), transparent 70%);"></div>
+   424→    <div class="container">
+   425→      <div class="reveal" style="text-align: center;">
+   426→        <span class="section-label" style="justify-content: center;">Full Service Offering</span>
+   427→        <h2 class="section-title">Beyond Social Media</h2>
+   428→        <p class="section-subtitle" style="margin: 0 auto;">Social media is just the beginning. We offer a complete digital ecosystem to grow your practice from every angle.</p>
+   429→      </div>
+   430→
+   431→      <div class="services-grid">
+   432→        <div class="service-card glass-light reveal reveal-delay-1">
+   433→          <div class="service-icon">&#127760;</div>
+   434→          <h3>Website Development</h3>
+   435→          <p>Custom-built, fast-loading clinic websites that convert visitors into patients.</p>
+   436→          <ul>
+   437→            <li>Mobile-first responsive design</li>
+   438→            <li>Appointment booking integration</li>
+   439→            <li>WhatsApp direct connect</li>
+   440→            <li>Fast loading &amp; SEO-ready</li>
+   441→          </ul>
+   442→        </div>
+   443→        <div class="service-card glass-light reveal reveal-delay-2">
+   444→          <div class="service-icon">&#128270;</div>
+   445→          <h3>Search Engine Optimization</h3>
+   446→          <p>Get found when patients search for your specialty in your city.</p>
+   447→          <ul>
+   448→            <li>Local SEO optimization</li>
+   449→            <li>Google ranking improvement</li>
+   450→            <li>Keyword research &amp; strategy</li>
+   451→            <li>Technical SEO audit</li>
+   452→          </ul>
+   453→        </div>
+   454→        <div class="service-card glass-light reveal reveal-delay-3">
+   455→          <div class="service-icon">&#128202;</div>
+   456→          <h3>Analytics &amp; Reporting</h3>
+   457→          <p>Transparent, data-backed reports showing exactly how your practice is growing online.</p>
+   458→          <ul>
+   459→            <li>Google Analytics 4</li>
+   460→            <li>Search Console monitoring</li>
+   461→            <li>Monthly performance reports</li>
+   462→            <li>Actionable growth insights</li>
+   463→          </ul>
+   464→        </div>
+   465→      </div>
+   466→    </div>
+   467→  </section>
+   468→
+   469→
+   470→  <!-- ============================================
+   471→       SECTION 11: WHY CHOOSE US
+   472→       ============================================ -->
+   473→  <section class="section section-dark" id="why-us">
+   474→    <div class="floating-orb orb-1" style="top: -10%; left: 50%;"></div>
+   475→    <div class="floating-orb orb-2" style="bottom: 0; right: 10%; animation-delay: -9s;"></div>
+   476→    <div class="container">
+   477→      <div class="reveal" style="text-align: center;">
+   478→        <span class="section-label" style="justify-content: center;">Why 8orbit</span>
+   479→        <h2 class="section-title">Why Clinics Choose Us</h2>
+   480→      </div>
+   481→
+   482→      <div class="why-grid">
+   483→        <div class="why-card glass reveal reveal-delay-1">
+   484→          <div class="why-icon">&#127973;</div>
+   485→          <h3>Healthcare Specialists</h3>
+   486→          <p>We don't work with restaurants or fashion brands. We specialize exclusively in healthcare — which means we understand medical accuracy, patient psychology, and ethical marketing that builds genuine trust.</p>
+   487→        </div>
+   488→        <div class="why-card glass reveal reveal-delay-2">
+   489→          <div class="why-icon">&#128200;</div>
+   490→          <h3>Data-Driven, Not Guesswork</h3>
+   491→          <p>Every content decision is backed by analytics — what topics patients search for, what times they're online, and what formats generate the most engagement. We measure success with real data, not vanity metrics.</p>
+   492→        </div>
+   493→        <div class="why-card glass reveal reveal-delay-3">
+   494→          <div class="why-icon">&#128640;</div>
+   495→          <h3>Cutting-Edge Execution</h3>
+   496→          <p>We use professional tools and technology to analyze, plan, and execute. From filming equipment to editing software to analytics platforms — everything we deliver meets the highest production standards.</p>
+   497→        </div>
+   498→        <div class="why-card glass reveal reveal-delay-4">
+   499→          <div class="why-icon">&#129309;</div>
+   500→          <h3>Long-Term Partnership</h3>
+   501→          <p>We're not freelancers doing one-off posts. We work as your long-term digital growth partner — consistently building your online reputation, month after month, so your practice keeps growing.</p>
+   502→        </div>
+   503→      </div>
+   504→    </div>
+   505→  </section>
+   506→
+   507→
+   508→  <!-- ============================================
+   509→       SECTION 12: CTA / CONTACT
+   510→       ============================================ -->
+   511→  <section class="section cta-section" id="contact">
+   512→    <div class="floating-orb orb-1"></div>
+   513→    <div class="floating-orb orb-2"></div>
+   514→    <div class="container">
+   515→      <div class="reveal">
+   516→        <h2 class="cta-title">Ready to Build Your<br />Digital Presence?</h2>
+   517→        <p class="cta-subtitle">Let's make your clinic the trusted choice for patients — both online and offline.</p>
+   518→      </div>
+   519→
+   520→      <div class="cta-contact-grid reveal reveal-delay-2">
+   521→        <a href="https://wa.me/919380245254" target="_blank" class="cta-contact-item">
+   522→          <div class="cta-icon">&#128172;</div>
+   523→          <div class="cta-text">
+   524→            <div class="cta-label">WhatsApp</div>
+   525→            <div class="cta-value">+91 9380245254</div>
+   526→          </div>
+   527→        </a>
+   528→        <a href="mailto:rohithraju58@gmail.com" class="cta-contact-item">
+   529→          <div class="cta-icon">&#9993;</div>
+   530→          <div class="cta-text">
+   531→            <div class="cta-label">Email</div>
+   532→            <div class="cta-value">rohithraju58@gmail.com</div>
+   533→          </div>
+   534→        </a>
+   535→        <a href="tel:+919380245254" class="cta-contact-item">
+   536→          <div class="cta-icon">&#128222;</div>
+   537→          <div class="cta-text">
+   538→            <div class="cta-label">Phone</div>
+   539→            <div class="cta-value">+91 9380245254</div>
+   540→          </div>
+   541→        </a>
+   542→      </div>
+   543→
+   544→      <div class="cta-brand reveal reveal-delay-3">
+   545→        <div class="cta-brand-name gradient-text">8orbit Studios</div>
+   546→        <div class="cta-brand-tagline">Digital Growth for Healthcare</div>
+   547→      </div>
+   548→    </div>
+   549→  </section>
+   550→
+   551→
+   552→  <!-- Scripts -->
+   553→  <script src="script.js"></script>
+   554→</body>
+   555→</html>
