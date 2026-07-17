@@ -146,28 +146,66 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ---- Navigation Dots ----
-  const sections = document.querySelectorAll('.section[id]');
-  const navDots = document.querySelectorAll('.nav-dot');
+  // ---- Top Navigation ----
+  const topNav = document.getElementById('topNav');
+  const hero = document.querySelector('.hero');
+  const navLinks = document.querySelectorAll('.top-nav-link[data-section]');
+  const mobileLinks = document.querySelectorAll('.top-nav-mobile-link[data-section]');
+  const allNavLinks = document.querySelectorAll('.top-nav-link[data-section], .top-nav-mobile-link[data-section]');
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('navMobile');
 
-  function updateActiveDot() {
-    let currentIndex = 0;
-    const scrollPos = window.scrollY + window.innerHeight / 2;
-    sections.forEach((section, index) => {
-      if (scrollPos >= section.offsetTop) currentIndex = index;
+  // Show/hide nav on scroll (appear after hero)
+  function updateNavVisibility() {
+    if (!topNav || !hero) return;
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    if (window.scrollY > heroBottom - 200) {
+      topNav.classList.add('visible');
+    } else {
+      topNav.classList.remove('visible');
+    }
+  }
+
+  // Track active section
+  function updateActiveNav() {
+    const sectionIds = ['contact', 'why-us', 'services', 'funnel', 'videos', 'process', 'analytics', 'results', 'before-after', 'case-study', 'opportunity', 'hero'];
+    let activeId = 'hero';
+    const scrollPos = window.scrollY + window.innerHeight / 3;
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && scrollPos >= el.offsetTop) activeId = id;
     });
-    navDots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+    allNavLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('data-section') === activeId);
     });
   }
 
-  window.addEventListener('scroll', updateActiveDot, { passive: true });
-  navDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const target = document.getElementById(dot.getAttribute('data-target'));
+  function onScroll() {
+    updateNavVisibility();
+    updateActiveNav();
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Smooth scroll for nav links
+  allNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById(this.getAttribute('data-section'));
       if (target) target.scrollIntoView({ behavior: 'smooth' });
+      // Close mobile menu
+      if (mobileMenu) mobileMenu.classList.remove('open');
+      if (hamburger) hamburger.classList.remove('open');
     });
   });
+
+  // Hamburger toggle
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  }
 
 
   // ---- Chart.js — Views Line Chart ----
@@ -367,7 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ---- Hero Parallax ----
-  const hero = document.querySelector('.hero');
   if (hero) {
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
@@ -391,6 +428,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
 
-  // ---- Initial dot update ----
-  updateActiveDot();
+  // ---- Initial state ----
+  onScroll();
 });

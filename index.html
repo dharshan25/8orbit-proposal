@@ -23,21 +23,36 @@
   <div class="cursor-glow"></div>
 
   <!-- ============================================
-       SIDE NAVIGATION DOTS
+       TOP NAVIGATION BAR
        ============================================ -->
-  <nav class="nav-dots" aria-label="Section navigation">
-    <div class="nav-dot active" data-target="hero"><span class="nav-dot-label">Home</span></div>
-    <div class="nav-dot" data-target="opportunity"><span class="nav-dot-label">Opportunity</span></div>
-    <div class="nav-dot" data-target="case-study"><span class="nav-dot-label">Case Study</span></div>
-    <div class="nav-dot" data-target="before-after"><span class="nav-dot-label">Transformation</span></div>
-    <div class="nav-dot" data-target="results"><span class="nav-dot-label">Results</span></div>
-    <div class="nav-dot" data-target="analytics"><span class="nav-dot-label">Analytics</span></div>
-    <div class="nav-dot" data-target="process"><span class="nav-dot-label">Process</span></div>
-    <div class="nav-dot" data-target="videos"><span class="nav-dot-label">Our Work</span></div>
-    <div class="nav-dot" data-target="funnel"><span class="nav-dot-label">Growth System</span></div>
-    <div class="nav-dot" data-target="services"><span class="nav-dot-label">Services</span></div>
-    <div class="nav-dot" data-target="why-us"><span class="nav-dot-label">Why Us</span></div>
-    <div class="nav-dot" data-target="contact"><span class="nav-dot-label">Contact</span></div>
+  <nav class="top-nav" id="topNav" aria-label="Section navigation">
+    <div class="top-nav-inner">
+      <a href="#hero" class="top-nav-logo">8orbit<span class="top-nav-logo-dot">.</span></a>
+      <div class="top-nav-links">
+        <a href="#opportunity" class="top-nav-link" data-section="opportunity">Opportunity</a>
+        <a href="#case-study" class="top-nav-link" data-section="case-study">Case Study</a>
+        <a href="#results" class="top-nav-link" data-section="results">Results</a>
+        <a href="#analytics" class="top-nav-link" data-section="analytics">Analytics</a>
+        <a href="#videos" class="top-nav-link" data-section="videos">Our Work</a>
+        <a href="#services" class="top-nav-link" data-section="services">Services</a>
+        <a href="#why-us" class="top-nav-link" data-section="why-us">Why Us</a>
+        <a href="#contact" class="top-nav-link top-nav-cta">Let's Talk</a>
+      </div>
+      <button class="top-nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="top-nav-mobile" id="navMobile">
+      <a href="#opportunity" class="top-nav-mobile-link" data-section="opportunity">Opportunity</a>
+      <a href="#case-study" class="top-nav-mobile-link" data-section="case-study">Case Study</a>
+      <a href="#results" class="top-nav-mobile-link" data-section="results">Results</a>
+      <a href="#analytics" class="top-nav-mobile-link" data-section="analytics">Analytics</a>
+      <a href="#videos" class="top-nav-mobile-link" data-section="videos">Our Work</a>
+      <a href="#services" class="top-nav-mobile-link" data-section="services">Services</a>
+      <a href="#why-us" class="top-nav-mobile-link" data-section="why-us">Why Us</a>
+      <a href="#contact" class="top-nav-mobile-link top-nav-cta">Let's Talk</a>
+    </div>
   </nav>
 
 
