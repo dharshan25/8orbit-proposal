@@ -1527,6 +1527,59 @@ body::before {
   object-fit: contain;
 }
 
+/* ---- Play / Pause Toggle Button ---- */
+.video-toggle-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 196, 154, 0.3);
+  background: rgba(13, 7, 4, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-bounce);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(196, 154, 108, 0.1);
+  padding: 0;
+  outline: none;
+}
+
+.video-toggle-btn:hover {
+  background: rgba(196, 154, 108, 0.25);
+  border-color: rgba(232, 196, 154, 0.6);
+  transform: scale(1.1);
+  box-shadow: 0 4px 24px rgba(196, 154, 108, 0.3), 0 0 30px rgba(196, 154, 108, 0.15);
+}
+
+.video-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.video-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-bright);
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.3s;
+}
+
+.video-toggle-btn.playing .video-toggle-icon {
+  color: #ffffff;
+}
+
+.video-toggle-btn.playing {
+  background: rgba(196, 154, 108, 0.3);
+  border-color: rgba(232, 196, 154, 0.5);
+}
+
 .video-placeholder {
   position: absolute;
   inset: 0;

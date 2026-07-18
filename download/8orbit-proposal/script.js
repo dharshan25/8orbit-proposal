@@ -381,21 +381,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ---- Auto-play videos when scrolled into view ----
-  const videos = document.querySelectorAll('.video-wrapper video');
-  if (videos.length) {
-    const videoObserver = new IntersectionObserver((entries) => {
+  // ---- Play / Pause toggle for videos ----
+  document.querySelectorAll('.video-wrapper video').forEach(video => {
+    const wrapper = video.closest('.video-wrapper');
+    // Create toggle button
+    const btn = document.createElement('button');
+    btn.className = 'video-toggle-btn';
+    btn.setAttribute('aria-label', 'Play video');
+    btn.innerHTML = '<span class="video-toggle-icon">&#9654;</span>';
+    wrapper.appendChild(btn);
+
+    function updateBtn() {
+      if (video.paused) {
+        btn.classList.remove('playing');
+        btn.querySelector('.video-toggle-icon').innerHTML = '&#9654;';
+        btn.setAttribute('aria-label', 'Play video');
+      } else {
+        btn.classList.add('playing');
+        btn.querySelector('.video-toggle-icon').innerHTML = '&#10074;&#10074;';
+        btn.setAttribute('aria-label', 'Pause video');
+      }
+    }
+
+    // Pause videos when scrolled out of view
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
+        if (!entry.isIntersecting && !video.paused) {
           video.pause();
+          updateBtn();
         }
       });
-    }, { threshold: 0.4 });
-    videos.forEach(v => videoObserver.observe(v));
-  }
+    }, { threshold: 0.2 });
+    observer.observe(wrapper);
+
+    btn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+      updateBtn();
+    });
+
+    video.addEventListener('ended', updateBtn);
+  });
 
 
   // ---- Smooth scroll for anchors ----
