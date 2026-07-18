@@ -66,6 +66,10 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  scroll-padding-top: 0;
+  scroll-margin-top: 0;
 }
 
 body {
@@ -74,6 +78,10 @@ body {
   background: #0d0704;
   overflow-x: hidden;
   line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 img, video { max-width: 100%; display: block; }
@@ -548,7 +556,7 @@ body::before {
    ============================================ */
 .top-nav {
   position: fixed;
-  top: 0;
+  top: 0 !important;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -557,12 +565,19 @@ body::before {
   opacity: 0;
   transform: translateY(-100%);
   pointer-events: none;
+  margin: 0 !important;
+  border: none;
+  outline: none;
 }
 
 .top-nav.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  background: rgba(13, 7, 4, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(196, 154, 108, 0.1);
 }
 
 .top-nav-inner {
@@ -865,13 +880,11 @@ body::before {
 }
 
 .stat-number {
-  font-family: var(--font-heading);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 3rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #e8c49a 50%, #d4a574 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(232, 196, 154, 0.3);
   line-height: 1;
   margin-bottom: 12px;
   position: relative;
@@ -1084,25 +1097,26 @@ body::before {
 .comparison-card.after h3 { color: var(--gold-bright); }
 
 .comparison-image {
-  margin: 0 12px;
-  border-radius: 16px;
+  margin: 0;
+  border-radius: 0 0 16px 16px;
   overflow: hidden;
   aspect-ratio: 9 / 16;
   max-height: 480px;
-  width: calc(100% - 24px);
+  width: 100%;
   background: rgba(0, 0, 0, 0.25);
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
   z-index: 2;
   transition: border-color 0.4s;
 }
 
 .comparison-card.after .comparison-image {
-  border-color: rgba(232, 196, 154, 0.12);
+  border-top-color: rgba(232, 196, 154, 0.12);
 }
 
 .comparison-card:hover .comparison-image {
-  border-color: rgba(232, 196, 154, 0.25);
+  border-top-color: rgba(232, 196, 154, 0.25);
 }
 
 .comparison-image img {
@@ -1230,16 +1244,16 @@ body::before {
 }
 
 .counter-number {
-  font-family: var(--font-body);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(2.6rem, 4.5vw, 3.4rem);
-  font-weight: 700;
-  color: var(--gold-bright);
-  text-shadow: 0 0 30px rgba(232, 196, 154, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 25px rgba(232, 196, 154, 0.35), 0 2px 4px rgba(0, 0, 0, 0.3);
   line-height: 1;
   margin-bottom: 4px;
   position: relative;
   z-index: 2;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
 .counter-suffix {
@@ -1505,8 +1519,8 @@ body::before {
   width: 100%;
   background: #000;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 20px 20px 0 0;
+  border: none;
+  border-radius: 0;
 }
 
 .video-wrapper video {
@@ -2068,5 +2082,14 @@ body::before {
   .counters-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .counter-card { padding: 28px 16px; }
   .hero-logo { font-size: 3.5rem; }
-  .top-nav { padding: 0 16px; }
+  .top-nav { padding: 0 16px; top: 0 !important; padding-top: 0 !important; }
+  .top-nav-inner { padding-top: 12px !important; }
+}
+
+/* Force flush top on all viewports — mobile safe-area override */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .top-nav {
+    top: 0 !important;
+    padding-top: 0 !important;
+  }
 }

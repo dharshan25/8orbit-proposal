@@ -381,17 +381,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ---- Video Placeholder Click ----
-  document.querySelectorAll('.video-placeholder').forEach(placeholder => {
-    placeholder.addEventListener('click', function() {
-      const videoWrapper = this.closest('.video-wrapper');
-      const video = videoWrapper.querySelector('video');
-      if (video && video.src) {
-        this.style.display = 'none';
-        video.play();
-      }
-    });
-  });
+  // ---- Auto-play videos when scrolled into view ----
+  const videos = document.querySelectorAll('.video-wrapper video');
+  if (videos.length) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+    videos.forEach(v => videoObserver.observe(v));
+  }
 
 
   // ---- Smooth scroll for anchors ----
